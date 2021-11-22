@@ -104,6 +104,8 @@ class Adduser(QWidget):
 
     def run(self):
         check_user1.add_user(self.lineEdit.text(), self.lineEdit_2.text())
+        self.hide()
+        ex5.show()
 
 
 class Battlefield(QWidget):

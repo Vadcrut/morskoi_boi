@@ -18,7 +18,9 @@ def check(user, password):
 
 
 def add_user(user, password):
-    a = cur.execute("""INSERT INTO users.db
+    print(user)
+    cur.execute("""INSERT INTO users.db
                               (user, password)
                               VALUES
-                              ?""", (user, password))
+                              (?, ?)""", (user, password))
+    con.commit()
