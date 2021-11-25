@@ -12,6 +12,10 @@ from structure import a1 as a
 from structure import a2 as acomp
 from structure import a3 as aplayer
 from pprint import pprint
+razmer_window = 300
+razmer_window1 = 900
+razmer = 30
+otstup = 50
 
 comp = -1
 
@@ -57,16 +61,19 @@ class Spravka(QWidget):
     def closeEvent(self, QCloseEvent):
         ex.show()
 
+    def resizeEvent(self, QResizeEvent):
+        self.listWidget.resize(self.size())
+
 
 class Insert(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('insert_login_parol.ui', self)
+        self.lineEdit.setText('')
+        self.lineEdit_2.setText('')
         self.pushButton.clicked.connect(self.go)
 
     def go(self):
-        self.lineEdit.setText('')
-        self.lineEdit_2.setText('')
         user = self.lineEdit.text()
         password = self.lineEdit_2.text()
         a = check_user1.check(user, password)
@@ -116,7 +123,7 @@ class Battlefield(QWidget):
         self.initUi()
 
     def initUi(self):
-        self.setGeometry(300, 300, 900, 900)
+        self.setGeometry(razmer_window, razmer_window, razmer_window1, razmer_window1)
         self.setWindowTitle('game')
 
         self.rb = QRadioButton('четырехпалубный', self)
@@ -150,19 +157,19 @@ class Battlefield(QWidget):
         self.group2.addButton(self.rb5)
 
         self.lb = QLabel(self)
-        self.lb.resize(500, 30)
+        self.lb.resize(500, razmer)
         self.lb.setText('')
         self.lb.move(450, 450)
 
         self.btn = QPushButton(self)
-        self.btn.resize(100, 30)
+        self.btn.resize(100, razmer)
         self.btn.setText('Далее')
         self.btn.move(50, 600)
         self.btn.clicked.connect(self.nextstep)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            if event.x() >= 50 and event.x() <= 350 and event.y() >= 50 and event.y() <= 350:
+            if event.x() >= otstup and event.x() <= 350 and event.y() >= otstup and event.y() <= 350:
                 self.f = True
                 kolp = 0
                 napr = 0
@@ -178,8 +185,8 @@ class Battlefield(QWidget):
                     napr = 1
                 if self.rb5.isChecked():
                     napr = 2
-                x = (event.x() - 50) // 30
-                y = (event.y() - 50) // 30
+                x = (event.x() - otstup) // razmer
+                y = (event.y() - otstup) // razmer
                 if self.d[kolp] > 0:
                     self.f = structure.check(x, y, kolp, napr, structure.a1)
                     if not self.f:
@@ -197,15 +204,15 @@ class Battlefield(QWidget):
 
     def drawfield(self, qp):
         for j in range(11):
-            qp.drawLine(50 + j * 30, 50, 50 + j * 30, 350)
-            qp.drawLine(50, 50 + j * 30, 350, 50 + j * 30)
+            qp.drawLine(otstup + j * razmer, otstup, otstup + j * razmer, otstup + 10 * razmer)
+            qp.drawLine(otstup, otstup + j * razmer, otstup + 10 * razmer, otstup + j * razmer)
         for i in range(10):
             for j in range(10):
                 if a[i][j] == 4:
-                    qp.drawLine(50 + j * 30, 50 + i * 30, 80 + j * 30, 80 + i * 30)
-                    qp.drawLine(50 + j * 30, 80 + i * 30, 80 + j * 30, 50 + i * 30)
+                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer, otstup + razmer + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer, otstup + i * razmer)
                 if a[i][j] == 3:
-                    qp.drawEllipse(50 + j * 30 + 15, 65 + i * 30, 1, 1)
+                    qp.drawEllipse(otstup + j * razmer + razmer // 2, otstup + razmer // 2 + i * razmer, 1, 1)
         self.update()
 
     def nextstep(self):
@@ -231,7 +238,7 @@ class PlayerField_2(QWidget):
         self.initUi()
 
     def initUi(self):
-        self.setGeometry(300, 300, 900, 900)
+        self.setGeometry(razmer_window, razmer_window, razmer_window1, razmer_window1)
         self.setWindowTitle('game')
 
         self.rb = QRadioButton('четырехпалубный', self)
@@ -265,19 +272,19 @@ class PlayerField_2(QWidget):
         self.group2.addButton(self.rb5)
 
         self.lb = QLabel(self)
-        self.lb.resize(500, 30)
+        self.lb.resize(500, razmer)
         self.lb.setText('')
         self.lb.move(450, 450)
 
         self.btn = QPushButton(self)
-        self.btn.resize(100, 30)
+        self.btn.resize(100, razmer)
         self.btn.setText('Далее')
         self.btn.move(50, 600)
         self.btn.clicked.connect(self.nextstep)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-            if event.x() >= 50 and event.x() <= 350 and event.y() >= 50 and event.y() <= 350:
+            if event.x() >= otstup and event.x() <= 350 and event.y() >= otstup and event.y() <= 350:
                 self.f = True
                 kolp = 0
                 napr = 0
@@ -312,15 +319,15 @@ class PlayerField_2(QWidget):
 
     def drawfield(self, qp):
         for j in range(11):
-            qp.drawLine(50 + j * 30, 50, 50 + j * 30, 350)
-            qp.drawLine(50, 50 + j * 30, 350, 50 + j * 30)
+            qp.drawLine(otstup + j * razmer, otstup, otstup + j * razmer, otstup + 10 * razmer)
+            qp.drawLine(otstup, otstup + j * razmer, otstup + 10 * razmer, otstup + j * razmer)
         for i in range(10):
             for j in range(10):
                 if aplayer[i][j] == 4:
-                    qp.drawLine(50 + j * 30, 50 + i * 30, 80 + j * 30, 80 + i * 30)
-                    qp.drawLine(50 + j * 30, 80 + i * 30, 80 + j * 30, 50 + i * 30)
+                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer, otstup + razmer + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer, otstup + i * razmer)
                 if aplayer[i][j] == 3:
-                    qp.drawEllipse(50 + j * 30 + 15, 65 + i * 30, 1, 1)
+                    qp.drawEllipse(otstup + j * razmer + razmer // 2, otstup + razmer // 2 + i * razmer, 1, 1)
         self.update()
 
     def nextstep(self):
@@ -335,7 +342,7 @@ class DoubleBattlefieldComp(QWidget):
         self.initUi()
 
     def initUi(self):
-        self.setGeometry(300, 300, 900, 900)
+        self.setGeometry(razmer_window, razmer, razmer_window1, razmer_window1)
         self.setWindowTitle('game')
         structure.makerasstanovka()
 
