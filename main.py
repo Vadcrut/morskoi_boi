@@ -12,6 +12,7 @@ from structure import a1 as a
 from structure import a2 as acomp
 from structure import a3 as aplayer
 from pprint import pprint
+
 razmer_window = 300
 razmer_window1 = 900
 razmer = 30
@@ -209,8 +210,10 @@ class Battlefield(QWidget):
         for i in range(10):
             for j in range(10):
                 if a[i][j] == 4:
-                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer, otstup + razmer + i * razmer)
-                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer, otstup + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer,
+                                otstup + razmer + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer,
+                                otstup + i * razmer)
                 if a[i][j] == 3:
                     qp.drawEllipse(otstup + j * razmer + razmer // 2, otstup + razmer // 2 + i * razmer, 1, 1)
         self.update()
@@ -324,8 +327,10 @@ class PlayerField_2(QWidget):
         for i in range(10):
             for j in range(10):
                 if aplayer[i][j] == 4:
-                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer, otstup + razmer + i * razmer)
-                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer, otstup + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + i * razmer, otstup + razmer + j * razmer,
+                                otstup + razmer + i * razmer)
+                    qp.drawLine(otstup + j * razmer, otstup + razmer + i * razmer, otstup + razmer + j * razmer,
+                                otstup + i * razmer)
                 if aplayer[i][j] == 3:
                     qp.drawEllipse(otstup + j * razmer + razmer // 2, otstup + razmer // 2 + i * razmer, 1, 1)
         self.update()
@@ -452,6 +457,7 @@ class DoubleBattlefieldComp(QWidget):
                     qp.setBrush(QColor(0, 0, 0))
                     qp.drawRect(50 + j * 30, 50 + i * 30, 30, 30)
         # self.update()
+
 
 class DoubleField(QWidget):
     def __init__(self):
@@ -607,10 +613,12 @@ class win(QWidget):
         super().__init__()
         uic.loadUi('UI\win.ui', self)
 
+
 class lose(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\lose.ui', self)
+
 
 class For_2_players(QWidget):
     def __init__(self):
@@ -622,10 +630,12 @@ class For_2_players(QWidget):
         self.hide()
         ex8.show()
 
+
 class win_2(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\p2_win.ui', self)
+
 
 class win_1(QWidget):
     def __init__(self):
