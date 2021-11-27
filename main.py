@@ -24,7 +24,7 @@ class MyWidget(QWidget):
     def __init__(self):
         self.f = True
         super().__init__()
-        uic.loadUi('start form.ui', self)
+        uic.loadUi('UI\start form.ui', self)
         self.pushButton.clicked.connect(self.run)
         self.pushButton_2.clicked.connect(self.startdouble)
         self.pushButton_3.clicked.connect(self.show_spravka)
@@ -49,7 +49,7 @@ class MyWidget(QWidget):
 class Spravka(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('spravka.ui', self)
+        uic.loadUi('UI\spravka.ui', self)
         self.resize(900, 900)
         try:
             with open('spravka.txt', 'rt', encoding='utf-8') as f:
@@ -68,7 +68,7 @@ class Spravka(QWidget):
 class Insert(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('insert_login_parol.ui', self)
+        uic.loadUi('UI\insert_login_parol.ui', self)
         self.lineEdit.setText('')
         self.lineEdit_2.setText('')
         self.pushButton.clicked.connect(self.go)
@@ -93,7 +93,7 @@ class Insert(QWidget):
 class Newuser(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('new_user.ui', self)
+        uic.loadUi('UI\ANew_user.ui', self)
         self.pushButton.clicked.connect(self.run)
 
     def run(self):
@@ -104,7 +104,7 @@ class Newuser(QWidget):
 class Adduser(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('insert_login_parol.ui', self)
+        uic.loadUi('UI\insert_login_parol.ui', self)
         self.pushButton.clicked.connect(self.run)
         self.hide()
         print('OK')
@@ -605,17 +605,17 @@ class DoubleField(QWidget):
 class win(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('win.ui', self)
+        uic.loadUi('UI\win.ui', self)
 
 class lose(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('lose.ui', self)
+        uic.loadUi('UI\lose.ui', self)
 
 class For_2_players(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('for two players.ui', self)
+        uic.loadUi('UI\For two players.ui', self)
         self.pushButton.clicked.connect(self.run)
 
     def run(self):
@@ -625,12 +625,12 @@ class For_2_players(QWidget):
 class win_2(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('2_win.ui', self)
+        uic.loadUi('UI\p2_win.ui', self)
 
 class win_1(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('1_win.ui', self)
+        uic.loadUi('UI\p1_win.ui', self)
 
 
 if __name__ == '__main__':
