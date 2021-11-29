@@ -411,7 +411,6 @@ class DoubleBattlefieldComp(QWidget):
                 while f:
                     f = structure.comphod()
                 self.player *= -1
-        pprint(acomp)
         self.update()
 
     def paintEvent(self, event):
@@ -426,18 +425,6 @@ class DoubleBattlefieldComp(QWidget):
             qp.drawLine(50, 50 + j * 30, 350, 50 + j * 30)
             qp.drawLine(450 + j * 30, 50, 450 + j * 30, 350)
             qp.drawLine(450, 50 + j * 30, 750, 50 + j * 30)
-        # for i in range(10):
-        #     for j in range(10):
-        #         if a[i][j] == 4:
-        #             qp.drawLine(50 + j * 30, 50 + i * 30, 80 + j * 30, 80 + i * 30)
-        #             qp.drawLine(50 + j * 30, 80 + i * 30, 80 + j * 30, 50 + i * 30)
-        #         if a[i][j] == 3:
-        #             qp.drawEllipse(50 + j * 30 + 15, 65 + i * 30, 1, 1)
-        #         if acomp[i][j] == 4:
-        #             qp.drawLine(450 + j * 30, 50 + i * 30, 480 + j * 30, 80 + i * 30)
-        #             qp.drawLine(450 + j * 30, 80 + i * 30, 480 + j * 30, 50 + i * 30)
-        #         if acomp[i][j] == 3:
-        #             qp.drawEllipse(450 + j * 30 + 15, 65 + i * 30, 1, 1)
         for i in range(10):
             for j in range(10):
                 if acomp[i][j] == 2:
@@ -456,7 +443,6 @@ class DoubleBattlefieldComp(QWidget):
                 if a[i][j] == 5:
                     qp.setBrush(QColor(0, 0, 0))
                     qp.drawRect(50 + j * 30, 50 + i * 30, 30, 30)
-        # self.update()
 
 
 class DoubleField(QWidget):
@@ -575,18 +561,6 @@ class DoubleField(QWidget):
             qp.drawLine(50, 50 + j * 30, 350, 50 + j * 30)
             qp.drawLine(450 + j * 30, 50, 450 + j * 30, 350)
             qp.drawLine(450, 50 + j * 30, 750, 50 + j * 30)
-        # for i in range(10):
-        #     for j in range(10):
-        #         if a[i][j] == 4:
-        #             qp.drawLine(50 + j * 30, 50 + i * 30, 80 + j * 30, 80 + i * 30)
-        #             qp.drawLine(50 + j * 30, 80 + i * 30, 80 + j * 30, 50 + i * 30)
-        #         if a[i][j] == 3:
-        #             qp.drawEllipse(50 + j * 30 + 15, 65 + i * 30, 1, 1)
-        #         if acomp[i][j] == 4:
-        #             qp.drawLine(450 + j * 30, 50 + i * 30, 480 + j * 30, 80 + i * 30)
-        #             qp.drawLine(450 + j * 30, 80 + i * 30, 480 + j * 30, 50 + i * 30)
-        #         if acomp[i][j] == 3:
-        #             qp.drawEllipse(450 + j * 30 + 15, 65 + i * 30, 1, 1)
         for i in range(10):
             for j in range(10):
                 if aplayer[i][j] == 2:
@@ -605,7 +579,6 @@ class DoubleField(QWidget):
                 if a[i][j] == 5:
                     qp.setBrush(QColor(0, 0, 0))
                     qp.drawRect(50 + j * 30, 50 + i * 30, 30, 30)
-        # self.update()
 
 
 class win(QWidget):
@@ -646,13 +619,13 @@ class win_1(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyWidget()
-    ex.show()  # главное меню
+    ex.show()
     ex1 = Spravka()
-    ex1.hide()  # справка
+    ex1.hide()
     ex2 = Insert()
-    ex2.hide()  # поле ввода данных
+    ex2.hide()
     ex3 = Newuser()
-    ex3.hide()  # пользователь не найден
+    ex3.hide()
     ex4 = Adduser()
     ex4.hide()
     ex5 = Battlefield()
