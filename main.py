@@ -26,6 +26,7 @@ class MyWidget(QWidget):
         self.f = True
         super().__init__()
         uic.loadUi('UI\start form.ui', self)
+        self.setWindowTitle('menu')
         self.pushButton.clicked.connect(self.run)
         self.pushButton_2.clicked.connect(self.startdouble)
         self.pushButton_3.clicked.connect(self.show_spravka)
@@ -51,6 +52,7 @@ class Spravka(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\spravka.ui', self)
+        self.setWindowTitle('spravka')
         self.resize(900, 900)
         try:
             with open('spravka.txt', 'rt', encoding='utf-8') as f:
@@ -70,6 +72,7 @@ class Insert(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\insert_login_parol.ui', self)
+        self.setWindowTitle('checking you')
         self.lineEdit.setText('')
         self.lineEdit_2.setText('')
         self.pushButton.clicked.connect(self.go)
@@ -95,6 +98,7 @@ class Newuser(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\ANew_user.ui', self)
+        self.setWindowTitle('adding user')
         self.pushButton.clicked.connect(self.run)
 
     def run(self):
@@ -106,6 +110,7 @@ class Adduser(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI\insert_login_parol.ui', self)
+        self.setWindowTitle('adding user')
         self.pushButton.clicked.connect(self.run)
         self.hide()
         print('OK')
@@ -231,6 +236,9 @@ class Battlefield(QWidget):
             if comp == 1:
                 ex11.show()
                 self.hide()
+
+    def closeEvent(self, QCloseEvent):
+        ex.show()
 
 
 class PlayerField_2(QWidget):
